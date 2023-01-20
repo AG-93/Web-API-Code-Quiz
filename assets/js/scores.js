@@ -1,6 +1,11 @@
 function printHighScores(){
-    let highscore = JSON.parse(localStorage.getItem("hightscores"))  || []
-    clearHighScores.sort(function(a,b){
+    let highScores = JSON.parse(localStorage.getItem("hightscores"))  || [];
+    clearHighScores.sort(function(a, b){
+
+        highScores.sort(fucntion(a, b)) {
+            return b.score - a.score;
+        }
+
 
     })
 
