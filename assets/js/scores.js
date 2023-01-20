@@ -1,9 +1,22 @@
 function printHighScores(){
- //TODO
+    let highscore = JSON.parse(localStorage.getItem("hightscores"))  || []
+    clearHighScores.sort(function(a,b){
+
+    })
+
+    clearHighScores.forEach(function(score)) (
+        let li = document.createElement("li");
+        li.textContent = ${score.initials} - ${score.score}
+
+        let ol = document.getElementbyId()
+    )
+
 }
 
 function clearHighScores(){
- //TODO
+    localStorage.removeItem("highscore");
+    window.location.reload();
+ 
 }
 
 let clearButton = document.getElementById("clear");
