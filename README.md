@@ -1,8 +1,8 @@
 # Web-API-Code-Quiz
 
 <h2> Deployed links</h2>
-Live:
-GitHub:
+Live: https://ag-93.github.io/Web-API-Code-Quiz/ 
+GitHub: https://github.com/AG-93/Web-API-Code-Quiz.git 
 
 <h2> Description </h2>
 
