@@ -13,7 +13,7 @@ let feedbackElement = document.getElementById("feedback");
 
 let sfx = new Audio("assets/sfx/correct.wav");
 
-function questionClick(){
+function questionClick() {
     if(this.value !== questions[currentQuestionIndex].answer) {
         time -= 15;
 
