@@ -11,7 +11,8 @@ let questions = [
         "answer": "if"
     },
     {
-        "title": "What must a string value must be enclosed within when being assinged to variables? ",
-        "choices": ["commas", "curly brackets", "parenthesis","quotes"]
+        "title": "What must a string value must be enclosed within when being assinged to variables?",
+        "choices": ["commas", "curly brackets", "parenthesis", "quotes"],
+        "answer": "quotes"
     }
 ]

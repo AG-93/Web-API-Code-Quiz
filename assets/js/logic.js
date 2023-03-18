@@ -1,7 +1,10 @@
-//let currentQuestionIndex = 0;
-let time = questions.length = 15;
+//variables to keep track of quiz state
+let currentQuestionIndex = 0;
+let time = questions.length * 15;
 let timerID;
 
+//document object represents your webpage
+//If you want to access any element in HTML,always start with accessing it.
 //HTML elements;
 let questionsElement = document.getElementById("questions");
 let timerElement = document.getElementById("time");
@@ -11,7 +14,7 @@ let startElement = document.getElementById("start");
 let initialElement = document.getElementById("initials");
 let feedbackElement = document.getElementById("feedback");
 
-let sfx = new Audio("assets/sfx/correct.wav");
+let sfxRight = new Audio("assets/sfx/correct.wav");
 
 function questionClick() {
     if(this.value !== questions[currentQuestionIndex].answer) {
@@ -24,22 +27,25 @@ function questionClick() {
 
             feedbackElement.textContent = "Wrong"
         } else {
-            sfxRight.play;
+            sfxRight.play();
             feedbackElement.textContent = "Correct!";
         }
     }
 
     feedbackElement.setAttribute("class", "feedback");
 
-    setTimeout(function() {
+    setTimeout(function(){
         feedbackElement.setAttribute("class", "feedback hide")
 
     }, 1000);
 
     currentQuestionIndex++;
 
-    if(currentQuestionIndex === questionClick.length)
-
+    if(currentQuestionIndex === questionClick.length) {
+        quizEnd()
+    } else {
+        getQuestion();
+    }
 }
 
 function getQuestion(){
@@ -51,16 +57,16 @@ function getQuestion(){
 
     choicesElement.innerHTML = "";
 
-    currentQuestion.choices.forEach(function(choice, index)){
+    currentQuestion.choices.forEach(function(choice, index) {
         let choiceButton = document.createElement("button");
 
         choiceButton.setAttribute("class", "choice");
         choiceButton.setAttribute("value", choice);
 
-        choiceButton.textContent = ${index + 1}: ${choice}
+        choiceButton.textContent = `${index + 1}. ${choice}`
 
         choiceButton.addEventListener
-    }    
+    })  
 }
 
 function quizEnd(){
@@ -88,10 +94,10 @@ function clockTick(){
 
 function startQuiz(){
     let startScreenElement = document.getElementById("start-screen");
-    startScreenElement.setAttribute ("class", "hide");
+    startScreenElement.setAttribute("class", "hide");
 
     //try hiding this to see what happens
-    questionsElement.removeAttribute ("class");
+    questionsElement.removeAttribute("class");
     
     timerID = setInterval(clockTick, 1000)
 }
@@ -100,11 +106,11 @@ function saveHighScore(){
     let initials = initialElement.value.trim();
     console.log(initials);
 
-    if(initials !==""){
-        let highScore = JSON.parse(localStorage.getItem("highscores")) || []
+    if(initials !== ""){
+        let highScore = JSON.parse(localStorage.getItem("highscores")) || [];
         let newScore = {
             score: time,
-            initials: initials;
+            initials: initials
         }
     }
 
@@ -121,8 +127,8 @@ function clickForEnter(event){
     
 }
 
-startButton.addEventListener("click", startQuiz);
+startElement.addEventListener("click", startQuiz);
 
-submitButton.addEventListener("click", saveHighScore);
+submitElement.addEventListener("click", saveHighScore);
 
-initialElement.addEventListener("keyup", checkForEnter);
+initialElement.addEventListener("keyup", clickForEnter);
